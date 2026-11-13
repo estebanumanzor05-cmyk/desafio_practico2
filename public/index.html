@@ -6,7 +6,7 @@
     <meta name="description" content="Catálogo de tours de un día por los 14 departamentos de El Salvador.">
     <title>Tours | Sivar Tours</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&amp;family=Poppins:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -20,19 +20,24 @@
     </header>
 
     <main>
-        <section class="banner">
+        <section class="banner banner-inicio">
             <div class="contenedor">
-                <h1>Lo mejor de los 14 departamentos a tan solo un click</h1>
+                <span class="etiqueta-banner">Tours de un día · El Salvador</span>
+                <h1>
+                    <span class="titulo-principal">Lo mejor de los 14 departamentos</span>
+                    <span class="titulo-secundario">a tan solo un click</span>
+                </h1>
                 <p>Elige tu tour, reserva tus cupos y sigue el estado de tu reserva.</p>
             </div>
+            <span class="credito-foto">Foto: Lago de Coatepeque · Wikimedia Commons</span>
         </section>
 
-        <section class="seccion">
+        <section class="seccion seccion-busqueda">
             <div class="contenedor">
-                <form class="barra-filtros" id="filtros" role="search">
+                <form class="barra-filtros tarjeta-busqueda" id="filtros" role="search">
                     <div>
-                        <label for="buscar">Buscar</label>
-                        <input type="search" id="buscar" name="buscar" placeholder="Nombre del tour o departamento">
+                        <label for="buscar" class="etiqueta-destacada">¿A dónde vamos hoy?</label>
+                        <input type="search" id="buscar" name="buscar" placeholder="Nombre">
                     </div>
                     <div>
                         <label for="departamento">Departamento</label>
