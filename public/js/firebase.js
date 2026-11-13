@@ -3,12 +3,12 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "PEGAR_API_KEY",
-    authDomain: "PEGAR_PROYECTO.firebaseapp.com",
-    projectId: "PEGAR_PROYECTO",
-    storageBucket: "PEGAR_PROYECTO.appspot.com",
-    messagingSenderId: "PEGAR_SENDER_ID",
-    appId: "PEGAR_APP_ID"
+    apiKey: "AIzaSyDx0nfmGnNW-q3ecZmkhu_rzvS8Nnzut3k",
+    authDomain: "sivar-tours-reservas.firebaseapp.com",
+    projectId: "sivar-tours-reservas",
+    storageBucket: "sivar-tours-reservas.firebasestorage.app",
+    messagingSenderId: "229617808971",
+    appId: "1:229617808971:web:e2b7c0896446dad2487fce"
 };
 
 const app = initializeApp(firebaseConfig);
