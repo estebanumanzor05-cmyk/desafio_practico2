@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crea tu cuenta de cliente en Sivar Tours.">
+    <title>Registrarse | Sivar Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a href="index.html" class="logo">Sivar <span>Tours</span></a>
+            <nav aria-label="Menú principal">
+                <ul id="menu-principal"></ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="seccion">
+        <div class="contenedor">
+            <form class="formulario" id="formulario-registro" novalidate>
+                <h1>Crear cuenta</h1>
+                <div class="campo">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" autocomplete="name" required minlength="3">
+                    <span class="error-campo" id="error-nombre"></span>
+                </div>
+                <div class="campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" autocomplete="email" required>
+                    <span class="error-campo" id="error-correo"></span>
+                </div>
+                <div class="campo">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="7777-7777" required>
+                    <span class="error-campo" id="error-telefono"></span>
+                </div>
+                <div class="campo">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" autocomplete="new-password" required minlength="6">
+                    <span class="error-campo" id="error-contrasena"></span>
+                </div>
+                <div class="campo">
+                    <label for="confirmacion">Confirmar contraseña</label>
+                    <input type="password" id="confirmacion" name="confirmacion" autocomplete="new-password" required>
+                    <span class="error-campo" id="error-confirmacion"></span>
+                </div>
+                <button type="submit" class="boton boton-azul">Crear cuenta</button>
+                <p class="texto-ayuda">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>© 2026 Sivar Tours · Turismo interno en El Salvador · Fotos: Wikimedia Commons</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/paginas/registro.js"></script>
+</body>
+</html>
