@@ -1,0 +1,96 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function haySesion() {
+      return request.auth != null;
+    }
+
+    function rutaUsuario(uid) {
+      return /databases/$(database)/documents/usuarios/$(uid);
+    }
+
+    function esAdmin() {
+      return haySesion()
+        && exists(rutaUsuario(request.auth.uid))
+        && get(rutaUsuario(request.auth.uid)).data.rol == "admin";
+    }
+
+    function tourValido(t) {
+      return t.keys().hasOnly(["titulo", "departamento", "descripcion", "fecha", "horario", "puntoSalida",
+                               "precio", "cupos", "cuposDisponibles", "imagen", "activo", "actualizado"])
+        && t.titulo is string && t.titulo.size() >= 3 && t.titulo.size() <= 80
+        && t.departamento is string && t.departamento.size() > 0
+        && t.descripcion is string && t.descripcion.size() <= 300
+        && t.fecha is string && t.fecha.matches("^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
+        && t.horario is string
+        && t.puntoSalida is string
+        && t.precio is number && t.precio > 0 && t.precio <= 500
+        && t.cupos is int && t.cupos >= 1 && t.cupos <= 50
+        && t.cuposDisponibles is int && t.cuposDisponibles >= 0 && t.cuposDisponibles <= t.cupos
+        && t.imagen is string
+        && t.activo is bool;
+    }
+
+    match /usuarios/{uid} {
+      allow read: if haySesion() && (request.auth.uid == uid || esAdmin());
+
+      allow create: if haySesion()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(["nombre", "correo", "telefono", "rol", "creado"])
+        && request.resource.data.rol == "cliente"
+        && request.resource.data.nombre is string && request.resource.data.nombre.size() >= 3
+        && request.resource.data.correo == request.auth.token.email
+        && request.resource.data.telefono is string
+        && request.resource.data.creado == request.time;
+
+      allow update: if haySesion()
+        && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["nombre", "telefono"]);
+
+      allow delete: if false;
+    }
+
+    match /tours/{tourId} {
+      allow read: if true;
+      allow create, update: if esAdmin() && tourValido(request.resource.data);
+      allow delete: if esAdmin();
+    }
+
+    match /reservas/{reservaId} {
+      function tourDeLaReserva() {
+        return get(/databases/$(database)/documents/tours/$(request.resource.data.tourId)).data;
+      }
+
+      function reservaDeClienteValida(r) {
+        return r.keys().hasOnly(["uid", "nombreCliente", "correoCliente", "tourId", "tourTitulo", "tourFecha",
+                                 "personas", "precioUnitario", "total", "estado", "creada"])
+          && r.uid == request.auth.uid
+          && r.estado == "pendiente"
+          && r.personas is int && r.personas >= 1 && r.personas <= 10
+          && exists(/databases/$(database)/documents/tours/$(r.tourId))
+          && tourDeLaReserva().activo == true
+          && r.personas <= tourDeLaReserva().cuposDisponibles
+          && r.precioUnitario == tourDeLaReserva().precio
+          && r.total == tourDeLaReserva().precio * r.personas
+          && r.creada == request.time;
+      }
+
+      function soloCambiaEstado() {
+        return request.resource.data.diff(resource.data).affectedKeys().hasOnly(["estado", "actualizada"]);
+      }
+
+      allow read: if haySesion() && (resource.data.uid == request.auth.uid || esAdmin());
+
+      allow create: if haySesion() && (esAdmin() || reservaDeClienteValida(request.resource.data));
+
+      allow update: if haySesion() && soloCambiaEstado() && resource.data.estado == "pendiente" && (
+        (esAdmin() && request.resource.data.estado in ["confirmada", "rechazada"])
+        || (resource.data.uid == request.auth.uid && request.resource.data.estado == "cancelada")
+      );
+
+      allow delete: if false;
+    }
+  }
+}
