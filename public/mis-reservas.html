@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consulta y cancela tus reservas en Sivar Tours.">
+    <title>Mis reservas | Sivar Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a href="index.html" class="logo">Sivar <span>Tours</span></a>
+            <nav aria-label="Menú principal">
+                <ul id="menu-principal"></ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner">
+            <div class="contenedor">
+                <h1>Mis reservas</h1>
+                <p>Aquí ves el estado de cada reserva. Puedes cancelar las que siguen pendientes.</p>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="contenedor">
+                <div class="encabezado-panel">
+                    <h2>Historial</h2>
+                    <label>Estado
+                        <select id="filtro-estado">
+                            <option value="">Todos</option>
+                            <option value="pendiente">Pendientes</option>
+                            <option value="confirmada">Confirmadas</option>
+                            <option value="rechazada">Rechazadas</option>
+                            <option value="cancelada">Canceladas</option>
+                        </select>
+                    </label>
+                </div>
+                <div id="lista-reservas"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>© 2026 Sivar Tours · Turismo interno en El Salvador · Fotos: Wikimedia Commons</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/paginas/mis-reservas.js"></script>
+</body>
+</html>
