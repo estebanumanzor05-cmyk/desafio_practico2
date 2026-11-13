@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración de tours y reservas de Sivar Tours.">
+    <title>Administración | Sivar Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a href="index.html" class="logo">Sivar <span>Tours</span></a>
+            <nav aria-label="Menú principal">
+                <ul id="menu-principal"></ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner">
+            <div class="contenedor">
+                <h1>Administración</h1>
+                <p>Gestiona el catálogo de tours, revisa las reservas y consulta los indicadores.</p>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="contenedor">
+                <div class="pestanas" role="tablist" aria-label="Secciones de administración">
+                    <button type="button" class="pestana" role="tab" id="pestana-tours" aria-controls="panel-tours" aria-selected="true">Tours</button>
+                    <button type="button" class="pestana" role="tab" id="pestana-reservas" aria-controls="panel-reservas" aria-selected="false">Reservas</button>
+                    <button type="button" class="pestana" role="tab" id="pestana-indicadores" aria-controls="panel-indicadores" aria-selected="false">Indicadores</button>
+                </div>
+
+                <section id="panel-tours" role="tabpanel" aria-labelledby="pestana-tours">
+                    <form class="formulario formulario-ancho" id="formulario-tour" novalidate>
+                        <h2 id="titulo-formulario-tour">Nuevo tour</h2>
+                        <div class="rejilla-campos">
+                            <div class="campo campo-ancho">
+                                <label for="titulo">Título</label>
+                                <input type="text" id="titulo" name="titulo" required maxlength="80">
+                                <span class="error-campo" id="error-titulo"></span>
+                            </div>
+                            <div class="campo">
+                                <label for="departamento-tour">Departamento</label>
+                                <select id="departamento-tour" name="departamento" required>
+                                    <option value="">Elige un departamento</option>
+                                </select>
+                                <span class="error-campo" id="error-departamento"></span>
+                            </div>
+                            <div class="campo">
+                                <label for="fecha">Fecha</label>
+                                <input type="date" id="fecha" name="fecha" required>
+                                <span class="error-campo" id="error-fecha"></span>
+                            </div>
+                            <div class="campo campo-ancho">
+                                <label for="descripcion">Descripción</label>
+                                <textarea id="descripcion" name="descripcion" required maxlength="300"></textarea>
+                                <span class="error-campo" id="error-descripcion"></span>
+                            </div>
+                            <div class="campo">
+                                <label for="horario">Horario</label>
+                                <input type="text" id="horario" name="horario" placeholder="7:00 a.m. a 5:00 p.m." required>
+                                <span class="error-campo" id="error-horario"></span>
+                            </div>
+                            <div class="campo">
+                                <label for="puntoSalida">Punto de salida</label>
+                                <input type="text" id="puntoSalida" name="puntoSalida" required>
+                                <span class="error-campo" id="error-puntoSalida"></span>
+                            </div>
+                            <div class="campo">
+                                <label for="precio">Precio por persona ($)</label>
+                                <input type="number" id="precio" name="precio" min="1" max="500" step="0.01" required>
+                                <span class="error-campo" id="error-precio"></span>
+                            </div>
+                            <div class="campo">
+                                <label for="cupos">Cupos totales</label>
+                                <input type="number" id="cupos" name="cupos" min="1" max="50" required>
+                                <span class="error-campo" id="error-cupos"></span>
+                            </div>
+                            <div class="campo campo-ancho">
+                                <label for="imagen">Dirección de la imagen</label>
+                                <input type="url" id="imagen" name="imagen" placeholder="https://..." required>
+                                <span class="error-campo" id="error-imagen"></span>
+                            </div>
+                            <div class="campo campo-ancho">
+                                <label class="casilla"><input type="checkbox" id="activo" name="activo" checked> Tour activo (visible para reservar)</label>
+                            </div>
+                        </div>
+                        <div class="acciones-formulario">
+                            <button type="submit" class="boton boton-azul" id="guardar-tour">Guardar tour</button>
+                            <button type="button" class="boton boton-borde oculto" id="cancelar-edicion">Cancelar edición</button>
+                        </div>
+                    </form>
+
+                    <div class="encabezado-panel seccion">
+                        <h2>Tours registrados</h2>
+                        <button type="button" class="boton boton-borde boton-pequeno" id="cargar-datos">Cargar datos iniciales</button>
+                    </div>
+                    <div id="tabla-tours"></div>
+                </section>
+
+                <section id="panel-reservas" role="tabpanel" aria-labelledby="pestana-reservas" class="oculto">
+                    <div class="encabezado-panel">
+                        <h2>Reservas</h2>
+                        <label>Estado
+                            <select id="filtro-reservas">
+                                <option value="pendiente">Pendientes</option>
+                                <option value="">Todas</option>
+                                <option value="confirmada">Confirmadas</option>
+                                <option value="rechazada">Rechazadas</option>
+                                <option value="cancelada">Canceladas</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="tabla-reservas"></div>
+                </section>
+
+                <section id="panel-indicadores" role="tabpanel" aria-labelledby="pestana-indicadores" class="oculto">
+                    <div id="contenido-indicadores"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>© 2026 Sivar Tours · Turismo interno en El Salvador · Fotos: Wikimedia Commons</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/paginas/admin.js"></script>
+</body>
+</html>
