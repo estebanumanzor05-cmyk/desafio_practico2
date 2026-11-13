@@ -94,6 +94,7 @@ nav ul {
 
 nav a,
 .enlace-boton {
+    white-space: nowrap;
     color: var(--blanco);
     text-decoration: none;
     font-weight: 600;
@@ -202,6 +203,261 @@ nav a.activo {
 
 .seccion {
     padding: 40px 0;
+}
+
+.banner-inicio {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: flex-end;
+    padding: 80px 0 120px;
+    background-color: var(--azul-oscuro);
+    background-image:
+        linear-gradient(90deg, rgba(0, 25, 60, 0.85) 0%, rgba(0, 25, 60, 0.45) 55%, rgba(0, 25, 60, 0.1) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 20, 50, 0.7) 100%),
+        url("../img/portada.jpg");
+    background-size: cover;
+    background-position: center 60%;
+}
+
+.banner-inicio .contenedor {
+    position: relative;
+}
+
+.etiqueta-banner {
+    display: inline-block;
+    background-color: var(--amarillo);
+    color: var(--negro);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+}
+
+.banner-inicio h1 {
+    margin: 0 0 18px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.titulo-principal {
+    display: block;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.titulo-secundario {
+    display: block;
+    margin-top: 6px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--amarillo);
+}
+
+.banner-inicio p {
+    max-width: 480px;
+    font-size: 17px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.credito-foto {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.seccion-busqueda {
+    padding-top: 0;
+}
+
+.tarjeta-busqueda {
+    position: relative;
+    align-items: end;
+    margin-top: -70px;
+    padding: 24px;
+    background-color: var(--blanco);
+    border-top: 5px solid var(--amarillo);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0, 30, 80, 0.18);
+}
+
+.barra-filtros .etiqueta-destacada {
+    font-size: 17px;
+    color: var(--azul);
+}
+
+.banner-foto {
+    padding: 70px 0 60px;
+    background-color: var(--azul-oscuro);
+    background-image:
+        linear-gradient(90deg, rgba(0, 25, 60, 0.9) 0%, rgba(0, 25, 60, 0.55) 60%, rgba(0, 25, 60, 0.25) 100%),
+        url("../img/portada.jpg");
+    background-size: cover;
+    background-position: center 55%;
+}
+
+.banner-foto h1 {
+    margin: 0;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.banner-foto .titulo-secundario {
+    font-size: 22px;
+}
+
+.seccion-gris {
+    background-color: var(--gris);
+}
+
+.nosotros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.nosotros img,
+.como-llegar img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 5px solid var(--amarillo);
+    border-radius: 12px;
+    background-color: var(--gris);
+}
+
+.nosotros h2,
+.como-llegar h2 {
+    font-size: 28px;
+    color: var(--azul-oscuro);
+}
+
+.frase {
+    margin: 0 0 24px;
+    padding-left: 18px;
+    border-left: 4px solid var(--azul);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--texto-suave);
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.tarjeta {
+    padding: 26px;
+    background-color: var(--blanco);
+    border-top: 5px solid var(--azul);
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(0, 30, 80, 0.08);
+}
+
+.tarjeta h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: var(--azul);
+}
+
+.tarjeta p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.seccion-contacto {
+    padding-top: 0;
+}
+
+.seccion-contacto .tarjetas {
+    margin-top: -36px;
+}
+
+.tarjeta-contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-top-color: var(--amarillo);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-contacto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 30, 80, 0.16);
+}
+
+.icono-contacto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background-color: var(--azul);
+}
+
+.icono-contacto svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: var(--amarillo);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tarjeta-contacto .detalle-contacto {
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.tarjeta-contacto .dato-contacto {
+    margin-top: auto;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.tarjeta-contacto a.dato-contacto:hover {
+    color: var(--azul);
+    text-decoration: underline;
+}
+
+.como-llegar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.llamado {
+    padding: 50px 0;
+    background-color: var(--azul);
+    color: var(--blanco);
+}
+
+.llamado-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.llamado h2 {
+    margin: 0;
+    font-size: 28px;
 }
 
 .barra-filtros {
@@ -686,9 +942,51 @@ footer p {
     margin: 0;
 }
 
+@media (max-width: 1100px) {
+    nav ul {
+        gap: 14px;
+    }
+
+    nav a,
+    .enlace-boton {
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 900px) {
+    body {
+        padding-top: 0;
+    }
+
+    header {
+        position: sticky;
+        height: auto;
+        padding: 12px 0;
+    }
+
+    .header-contenido {
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .rejilla-tours {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .nosotros,
+    .como-llegar {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
     }
 
     .indicadores {
@@ -702,11 +1000,13 @@ footer p {
 
 @media (max-width: 700px) {
     body {
-        padding-top: 110px;
+        padding-top: 0;
     }
 
     header {
-        height: 110px;
+        position: sticky;
+        height: auto;
+        padding: 12px 0;
     }
 
     .header-contenido {
@@ -728,6 +1028,36 @@ footer p {
 
     .banner h1 {
         font-size: 28px;
+    }
+
+    .banner-inicio {
+        min-height: 400px;
+        padding: 60px 0 100px;
+    }
+
+    .titulo-principal {
+        font-size: 28px;
+    }
+
+    .titulo-secundario {
+        font-size: 21px;
+    }
+
+    .tarjeta-busqueda {
+        margin-top: -56px;
+        padding: 18px;
+    }
+
+    .banner-foto {
+        padding: 50px 0 60px;
+    }
+
+    .banner-foto .titulo-secundario {
+        font-size: 18px;
+    }
+
+    .llamado h2 {
+        font-size: 22px;
     }
 
     .barra-filtros,

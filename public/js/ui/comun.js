@@ -78,7 +78,11 @@ export function botonOcupado(boton, ocupado, texto) {
 
 function pintarMenu(perfil, paginaActiva) {
     const menu = document.querySelector("#menu-principal");
-    const enlaces = [{ href: "index.html", texto: "Tours", clave: "catalogo" }];
+    const enlaces = [
+        { href: "index.html", texto: "Tours", clave: "catalogo" },
+        { href: "quienes-somos.html", texto: "Quiénes somos", clave: "quienes-somos" },
+        { href: "contacto.html", texto: "Contacto", clave: "contacto" }
+    ];
     if (perfil) {
         enlaces.push({ href: "mis-reservas.html", texto: "Mis reservas", clave: "mis-reservas" });
     }
